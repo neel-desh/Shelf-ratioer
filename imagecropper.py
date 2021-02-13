@@ -1,23 +1,34 @@
 from PIL import Image
-image = Image.open('demo_image.jpg')
-width, height = image.size
-midpoint = width//2
-point = height//3
-point2 = point
-point3 = height
-#box = (200, 300, 700, 600) #left, upper, right, and lower
-#cropped_image = image.crop(box)
-#cropped_image.save('cropped_image.jpg')
-#output we want
-# 2 columns - straight line 
-# 3 rows - sleeping line
+import os
+try:
+    image = Image.open('demo.jpeg')
+    image1 =image
+    image2 = image
+    width, height = image.size
 
-box1 =
-box2 =
-box3 = 
-box4 =
-box5 =
-box6 =
+    row1 = (0,0,width,height//3)
 
-# Print size of cropped image
-print(cropped_image.size) # Output: (500, 300)
+    row2 = (0,height//3,width,(height//3)*2)
+
+    row3 = (0,(height//3)*2,width,height)
+
+    filename  = 'static\cropped\saverow1.jpg'
+    filename2 = 'static\cropped\saverow2.jpg'
+    filename3 = 'static\cropped\saverow3.jpg'
+
+    cropped_image = image.crop(row1)
+    cropped_image.save(filename)
+
+    cropped_image1 = image1.crop(row2)
+    cropped_image1.save(filename2)
+
+    cropped_image2 = image2.crop(row3)
+    cropped_image2.save(filename3)
+
+    ## Remove comments to auto delete the file
+    #os.remove(filename)
+    #os.remove(filename2)
+    #os.remove(filename3)
+
+except Exception:
+    print("Some error occured")
